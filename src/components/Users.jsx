@@ -1,5 +1,6 @@
 import { useState } from "react"
 import api from "../api"
+import Pagination from "./Pagination"
 
 export function Users() {
     const [users, setUsers] = useState(api.users.fetchAll())
@@ -18,11 +19,16 @@ export function Users() {
     const handleDelete = (userId) =>{
         setUsers(users.filter((user) => user._id !== userId))
     }
+    const count = users.length
+    const pageSize = 4;
+    const handlePageChange = (pageIndex) =>{
+        console.log("page: ", pageIndex)
+    }
 
     return(
         <>
-            <h1><span className={"badge m-2 py-2 px-4 bg-" +(users.length > 0 ? "primary" : "danger")}>{dynamicPhrase(users.length)}</span></h1>
-            {users.length > 0 &&
+            <h1><span className={"badge m-2 py-2 px-4 bg-" +(count > 0 ? "primary" : "danger")}>{dynamicPhrase(count)}</span></h1>
+            {count > 0 &&
             <table className="table">
                 <thead>
                     <tr>
@@ -47,6 +53,7 @@ export function Users() {
                     ))}
                 </tbody>
             </table> }
+            <Pagination itemsCount={count} pageSize={pageSize} onPageChange={handlePageChange}/>
         </>
     )
 }
