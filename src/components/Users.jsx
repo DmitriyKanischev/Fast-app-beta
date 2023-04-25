@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { User } from './User';
 import Pagination from './Pagination';
+import { paginate } from '../utils/paginate';
 
 export function Users({users, handleDelete}) {
     const count = users.length
@@ -11,6 +12,7 @@ export function Users({users, handleDelete}) {
         console.log("page: ", pageIndex)
     }
 
+    const userCrop = paginate(users, currentPage, pageSize)
     return (
         <>
             <table className="table">
@@ -25,8 +27,8 @@ export function Users({users, handleDelete}) {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((user)=>(
-                        <User user={user} handleDelete={handleDelete}/>
+                    {userCrop.map((user)=>(
+                        <User user={user} key={user._id} handleDelete={handleDelete}/>
                     ))}
                 </tbody>
             </table>
