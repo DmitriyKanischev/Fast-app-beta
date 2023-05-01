@@ -9,7 +9,8 @@ import GroupList from "./GroupList";
 
 const Users = ({ users: allUsers, ...rest }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [professions, setProfessions] = useState()
+    const [professions, setProfessions] = useState();
+    const [selectedProf, setselectedProf] = useState()
     const count = allUsers.length;
     const pageSize = 4;
     useEffect(() => {
@@ -17,8 +18,8 @@ const Users = ({ users: allUsers, ...rest }) => {
     }, [])
 
 
-    const handleProfessionSelect = (params) => {
-        console.log(params)
+    const handleProfessionSelect = (item) => {
+        setselectedProf(item)
     }
 
 
@@ -30,10 +31,9 @@ const Users = ({ users: allUsers, ...rest }) => {
         <>
             {professions && 
                 <GroupList 
+                    selectedItem={selectedProf}
                     items={professions} 
-                    onItemSelect={handleProfessionSelect}
-                    valueProperty="_id"
-                    contentProperty="name" />
+                    onItemSelect={handleProfessionSelect}/>
             }
             {count > 0 && (
                 <table className="table">
