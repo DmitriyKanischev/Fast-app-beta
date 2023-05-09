@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import User from './User';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import BookMark from './Bookmark'
 import QualitiesList from './qualitiesList';
+import Table from './Table';
 
 
 const UsersTable = ({users, onSort, selectedSort, onToggleBookMark, onDelete, ...rest}) => {
@@ -26,15 +26,10 @@ const UsersTable = ({users, onSort, selectedSort, onToggleBookMark, onDelete, ..
                             </button>)}
     }
     return (
-        <table className="table">
+        <Table >
             <TableHeader {...{onSort, selectedSort, columns}} />
             <TableBody {...{columns, data: users}}/>
-            {/* <tbody>
-                {users.map((user) => (
-                    <User {...rest} {...user} key={user._id} />
-                ))}
-            </tbody> */}
-        </table>
+        </Table>
 );
 }
 
