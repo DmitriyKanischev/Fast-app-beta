@@ -1,6 +1,5 @@
 import React from "react";
 import Users from "./layout/Users";
-import User from "./components/User";
 import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import NotFoundPage from "./components/NotFoundPage";

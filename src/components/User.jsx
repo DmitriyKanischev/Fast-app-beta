@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import PropTypes from "prop-types";
 import api from "../api"
 import QualitiesList from './qualitiesList';
@@ -23,7 +23,7 @@ const User = ({userId}) => {
             </div>
         )
     } else {
-        return <h3>Loading...</h3>              // ----------------Add navigate to users
+        return <Navigate to='/404'/>            
     }
 }
 User.propTypes = {
