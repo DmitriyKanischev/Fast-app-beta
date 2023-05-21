@@ -1,9 +1,11 @@
 import React from "react";
-import Users from "./components/Users";
-import { Routes, Route } from "react-router-dom";
+import Users from "./layout/Users";
+import User from "./components/User";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import Home from "./components/Home";
-import Login from "./components/Login"
+import NotFoundPage from "./components/NotFoundPage";
+import Home from "./layout/Home";
+import Login from "./layout/Login"
 
 function App() {
     return (
@@ -12,7 +14,9 @@ function App() {
         <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/login' element={<Login />} />
-            <Route path='/users' element={<Users />} />
+            <Route path='/users/:userId?' element={<Users />} />
+            <Route path="/404" element={<NotFoundPage/>}/>
+            <Route path="*" element={<Navigate to='/404' replace />} />
         </Routes>
        </>
     );

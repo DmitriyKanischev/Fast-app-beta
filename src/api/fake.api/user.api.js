@@ -119,6 +119,11 @@ const users = [
         bookmark: false
     },
 ]
-export function fetchAll() {
+export const fetchAll = () => {
     return users
 }
+
+export const getById = (id) => {
+    return users.find((user) => user._id === id)
+}
+
