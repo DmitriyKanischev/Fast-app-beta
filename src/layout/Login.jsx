@@ -13,7 +13,8 @@ const Login = () => {
         }
         const validatorConfig = {
             email: {
-                isRequired: {message:"Электронная почта обязательна для заполнения"}
+                isRequired: {message:"Электронная почта обязательна для заполнения"},
+                isEmail: {message: "Email введён некорректно"}
             },
             password: {
                 isRequired: {message:"Пароль обязателен для заполнения"}
