@@ -11,27 +11,28 @@ const Login = () => {
             [target.name]: target.value
         }))
         }
-        const validatorConfig = {
-            email: {
-                isRequired: {message:"Электронная почта обязательна для заполнения"},
-                isEmail: {message: "Email введён некорректно"}
-            },
-            password: {
-                isRequired: {message:"Пароль обязателен для заполнения"},
-                isCapitalSymbol: {message: "Пароль должен содержать заглавную букву"},
-                isContainDigit: {message: "Пароль должен содержать цифру"},
-                minLength: {message: "Минимальная длина пароля - 8 символов", value: 8}
-            },
-        }
-        useEffect(()=>{
-            validate()
-        }, [data])
+    const validatorConfig = {
+        email: {
+            isRequired: {message:"Электронная почта обязательна для заполнения"},
+            isEmail: {message: "Email введён некорректно"}
+        },
+        password: {
+            isRequired: {message:"Пароль обязателен для заполнения"},
+            isCapitalSymbol: {message: "Пароль должен содержать заглавную букву"},
+            isContainDigit: {message: "Пароль должен содержать цифру"},
+            minLength: {message: "Минимальная длина пароля - 8 символов", value: 8}
+        },
+    }
+    useEffect(()=>{
+        validate()
+    }, [data])
 
-        const validate = () => {
-            const errors = validator(data, validatorConfig)
-            setErrors(errors)
-            return Object.keys(errors).length === 0
-        }
+    const validate = () => {
+        const errors = validator(data, validatorConfig)
+        setErrors(errors)
+        return Object.keys(errors).length === 0
+    }
+    const isValid = Object.keys(errors).length === 0
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -40,27 +41,32 @@ const Login = () => {
         console.log(data)
     }
     return ( 
-        <>
-            <form onSubmit={handleSubmit}>
-                <TextField
-                    label="E-mail"
-                    type='text'
-                    name='email'
-                    value={data.email}
-                    onChange={handleChange}
-                    error={errors.email}
-                />
-                <TextField
-                    label="Password"
-                    type='password'
-                    name='password'
-                    value={data.password}
-                    onChange={handleChange}
-                    error={errors.password}
-                />
-                <button type='submit'>Submit</button>
-            </form>
-        </>
+        <div className='container mt-5'>
+            <div className='row'>
+                <div className='col-md-6 offset-md-3 p-4 shadow'>
+                <h3 className='mb-4'>Sign in</h3>
+                    <form onSubmit={handleSubmit}>
+                        <TextField
+                            label="E-mail:"
+                            type='text'
+                            name='email'
+                            value={data.email}
+                            onChange={handleChange}
+                            error={errors.email}
+                        />
+                        <TextField
+                            label="Password:"
+                            type='password'
+                            name='password'
+                            value={data.password}
+                            onChange={handleChange}
+                            error={errors.password}
+                        />
+                        <button className='btn btn-primary' type='submit' disabled={!isValid}>Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
      );
 }
  
