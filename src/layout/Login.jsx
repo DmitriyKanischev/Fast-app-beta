@@ -17,8 +17,11 @@ const Login = () => {
                 isEmail: {message: "Email введён некорректно"}
             },
             password: {
-                isRequired: {message:"Пароль обязателен для заполнения"}
-            }
+                isRequired: {message:"Пароль обязателен для заполнения"},
+                isCapitalSymbol: {message: "Пароль должен содержать заглавную букву"},
+                isContainDigit: {message: "Пароль должен содержать цифру"},
+                minLength: {message: "Минимальная длина пароля - 8 символов", value: 8}
+            },
         }
         useEffect(()=>{
             validate()
