@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Fast-app-beta/static/css/main.e6c13ad2.css",
-    "main.js": "/Fast-app-beta/static/js/main.a917cb40.js",
+    "main.js": "/Fast-app-beta/static/js/main.b449204d.js",
     "static/js/787.4d212c3f.chunk.js": "/Fast-app-beta/static/js/787.4d212c3f.chunk.js",
     "index.html": "/Fast-app-beta/index.html",
     "main.e6c13ad2.css.map": "/Fast-app-beta/static/css/main.e6c13ad2.css.map",
-    "main.a917cb40.js.map": "/Fast-app-beta/static/js/main.a917cb40.js.map",
+    "main.b449204d.js.map": "/Fast-app-beta/static/js/main.b449204d.js.map",
     "787.4d212c3f.chunk.js.map": "/Fast-app-beta/static/js/787.4d212c3f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.a917cb40.js"
+    "static/js/main.b449204d.js"
   ]
 }
