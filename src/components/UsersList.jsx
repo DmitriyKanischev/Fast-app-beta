@@ -7,7 +7,6 @@ import api from "../api";
 import GroupList from "./GroupList";
 import UsersTable from "./UsersTable";
 import _ from "lodash";
-import TextField from "./TextField";
 
 
 const UsersList = () => {
