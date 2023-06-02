@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import User from '../components/User';
-import UsersList from '../components/UsersList';
+import UserPage from '../components/page/UserPage/UserPage';
+import UsersListPage from '../components/page/UsersListPage/UsersListPage';
 
 const Users = () => {
     const params = useParams()
@@ -9,7 +9,7 @@ const Users = () => {
     
     return ( 
         <>
-            {userId ? <User userId={userId}/> : <UsersList/>}
+            {userId ? <UserPage userId={userId}/> : <UsersListPage/>}
         </>
      );
 }

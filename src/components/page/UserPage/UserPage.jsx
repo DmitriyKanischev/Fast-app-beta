@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import PropTypes from "prop-types";
-import api from "../api"
-import QualitiesList from './qualitiesList';
+import api from "../../../api"
+import QualitiesList from '../../ui/qualities/qualitiesList';
 
-const User = ({userId}) => {
+const UserPage = ({userId}) => {
     const navigate = useNavigate()
     const handleBack = () => {
         navigate(-1)
@@ -26,8 +26,8 @@ const User = ({userId}) => {
         return <Navigate to='/404'/>            
     }
 }
-User.propTypes = {
+UserPage.propTypes = {
     userId:PropTypes.string.isRequired
 }
  
-export default User;
+export default UserPage;

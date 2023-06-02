@@ -1,5 +1,5 @@
 # Fast app
-### My term paper on the example of which I study React
+### My coursework on the example of which I study React
 #### Here are presented:
 ### `components`
 ### `hooks`

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableHeader from './TableHeader';
-import TableBody from './TableBody';
-import BookMark from './Bookmark'
-import QualitiesList from './qualitiesList';
-import Table from './Table';
+import TableHeader from '../common/table/TableHeader';
+import TableBody from '../common/table/TableBody';
+import BookMark from '../common/Bookmark'
+import QualitiesList from './qualities/qualitiesList';
+import Table from '../common/table/Table';
 import { Link } from 'react-router-dom';
 
 
