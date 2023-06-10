@@ -40,10 +40,8 @@ const LoginForm = () => {
             if(!isValid) return;
             console.log(data)
         }
-        return ( 
-            <div className='container mt-5'>
-                <div className='row'>
-                    <div className='col-md-6 offset-md-3 p-4 shadow'>
+        return (
+                <>
                     <h3 className='mb-4'>Sign in</h3>
                         <form onSubmit={handleSubmit}>
                             <TextField
@@ -64,9 +62,7 @@ const LoginForm = () => {
                             />
                             <button className='btn btn-primary' type='submit' disabled={!isValid}>Submit</button>
                         </form>
-                    </div>
-                </div>
-            </div>
+                </>
          );
 }
  

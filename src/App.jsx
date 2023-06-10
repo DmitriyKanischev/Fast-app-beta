@@ -12,7 +12,7 @@ function App() {
         <NavBar/>
         <Routes>
             <Route index element={<Home/>} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/login/:type?' element={<Login />} />
             <Route path='/users/:userId?' element={<Users />} />
             <Route path="/404" element={<NotFoundPage/>}/>
             <Route path="*" element={<Navigate to='/404' replace />} />
