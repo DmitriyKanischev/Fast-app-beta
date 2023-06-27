@@ -3,10 +3,11 @@ import TextField from '../common/form/TextField';
 import { validator } from '../../utils/validator';
 import api from '../../api';
 import SelectField from '../common/form/SelectField';
+import RadioField from '../common/form/RadioField';
 
 
 const SignUpForm = () => {
-    const [data, setData] = useState({email:"",password:"", profession: ""});
+    const [data, setData] = useState({email:"",password:"", profession: "", sex: "other"});
     const [professions, setProfession] = useState();
     const [errors, setErrors] = useState({});
 
@@ -78,6 +79,16 @@ const SignUpForm = () => {
                             onChange={handleChange}
                             value={data.profession}
                             error={errors.profession}
+                        />
+                        <RadioField
+                            label="Ваш пол:"
+                            options={
+                                [{name: "Мужской", value: "male"},
+                                 {name: "Женский", value: "female"},
+                                 {name: "Другое", value: "other"}]}
+                            value={data.sex}
+                            name="sex"
+                            onChange={handleChange}
                         />
                         
                         <button 

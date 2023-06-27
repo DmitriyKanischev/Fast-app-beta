@@ -16,7 +16,7 @@ const SelectField = ({label, value, onChange, defaultOption, options, error}) =>
     
     return ( 
         <div className='mb-4'>
-                            <label htmlFors="validationCustom04" className='form-label'>{label}</label>
+                            <label htmlFor="validationCustom04" className='form-label'>{label}</label>
                             <select 
                                 className={getInputClasses()} 
                                 id='validationCustom04'
