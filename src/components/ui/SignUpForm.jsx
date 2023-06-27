@@ -1,11 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import TextField from '../common/form/TextField';
 import { validator } from '../../utils/validator';
+import api from '../../api';
+import SelectField from '../common/form/SelectField';
 
 
 const SignUpForm = () => {
-    const [data, setData] = useState({email:"",password:""});
-    const [errors, setErrors] = useState({})
+    const [data, setData] = useState({email:"",password:"", profession: ""});
+    const [professions, setProfession] = useState();
+    const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        api.professions.fetchAll().then((data)=>setProfession(data))
+    }, [])
     const handleChange = ({target}) => {
         setData((prevState) => ({
             ...prevState, 
@@ -23,6 +30,9 @@ const SignUpForm = () => {
             isContainDigit: {message: "Пароль должен содержать цифру"},
             minLength: {message: "Минимальная длина пароля - 8 символов", value: 8}
         },
+        profession: {
+            isRequired: {message: "Поле обязательно для заполнения"}
+        }
     }
     useEffect(()=>{
         validate()
@@ -61,7 +71,22 @@ const SignUpForm = () => {
                             onChange={handleChange}
                             error={errors.password}
                         />
-                        <button className='btn btn-primary' type='submit' disabled={!isValid}>Submit</button>
+                        <SelectField
+                            label="Выбери свою профессию"
+                            defaultOption="Choose.."
+                            options={professions}
+                            onChange={handleChange}
+                            value={data.profession}
+                            error={errors.profession}
+                        />
+                        
+                        <button 
+                            className='btn btn-primary' 
+                            type='submit' 
+                            disabled={!isValid}
+                            >
+                            Submit
+                        </button>
                     </form>
             </>
      );
