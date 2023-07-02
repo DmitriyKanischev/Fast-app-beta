@@ -13,6 +13,11 @@ const eyeSlash = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
 
 const TextField = ({label, type, name, value, onChange, error}) => {
     const [showPassword, setShowPassword] = useState(false)
+
+    const handleChange = ({target}) => {
+        onChange({name: target.name, value: target.value})
+    }
+
     const getInputClasses = () => {
         return "form-control "+(error? 'is-invalid': 'is-valid')
     }
@@ -28,7 +33,7 @@ const TextField = ({label, type, name, value, onChange, error}) => {
                         id={name} 
                         name={name} 
                         value={value} 
-                        onChange={onChange}
+                        onChange={handleChange}
                         className={getInputClasses()}
                         />
                     {type === "password" && 

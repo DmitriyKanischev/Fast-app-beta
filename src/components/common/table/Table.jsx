@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const Table = ({onSort, selectedSort, columns, data, children}) => {
     return (
         <table className="table">
-            {children ? children : (
+            {children || (
                 <>
                     <TableHeader {...{onSort, selectedSort, columns}} />
                     <TableBody {...{columns, data}}/>

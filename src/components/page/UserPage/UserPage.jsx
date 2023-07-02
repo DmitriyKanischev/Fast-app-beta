@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import PropTypes from "prop-types";
 import api from "../../../api"
@@ -6,11 +6,16 @@ import QualitiesList from '../../ui/qualities/qualitiesList';
 
 const UserPage = ({userId}) => {
     const navigate = useNavigate()
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        api.users.getById(userId).then((data) => setUser(data))
+    }, []);
+
     const handleBack = () => {
         navigate(-1)
     }
 
-    const user = api.users.getById(userId);
     if(user) {
         return (
             <div>

@@ -16,7 +16,10 @@ const UsersListPage = () => {
     const [sortBy, setSortBy] = useState({iter: 'name', order: 'asc'});
     const pageSize = 4;
 
-    const [users, setUsers] = useState(api.users.fetchAll());
+    const [users, setUsers] = useState();
+    useEffect(() => {
+        api.users.fetchAll().then((data) => setUsers(data));
+    }, []);
 
     const [searchQuery, setSearchQuery] = useState('')                        //for search area
 
@@ -24,14 +27,13 @@ const UsersListPage = () => {
         setUsers(users.filter((user) => user._id !== userId));
     };
     const handleToggleBookMark = (id) => {
-        setUsers(
-            users.map((user) => {
-                if (user._id === id) {
-                    return { ...user, bookmark: !user.bookmark };
-                }
-                return user;
-            })
-        );
+        const newArray = users.map((user) => {
+            if (user._id === id) {
+                return { ...user, bookmark: !user.bookmark };
+            }
+            return user;
+        });
+        setUsers(newArray);
     };
 
     // 
@@ -71,7 +73,6 @@ const UsersListPage = () => {
                                 : selectedProf ?
                                 users.filter((user) => JSON.stringify(user.profession) === JSON.stringify(selectedProf)) 
                                 : users;
-
         const count = filteredUsers.length;
         const sortedUsers=_.orderBy(filteredUsers, [sortBy.path], [sortBy.order]);
         const usersCrop = paginate(sortedUsers, currentPage, pageSize);
