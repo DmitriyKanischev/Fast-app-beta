@@ -5,10 +5,19 @@ import api from '../../api';
 import SelectField from '../common/form/SelectField';
 import RadioField from '../common/form/RadioField';
 import MultiSelectField from '../common/form/multiSelect';
+import CheckBoxField from '../common/form/CheckBoxField';
 
 
 const SignUpForm = () => {
-    const [data, setData] = useState({email:"",password:"", profession: "", sex: "other", qualities: []});
+    const [data, setData] = useState(
+        {
+            email:"",
+            password:"", 
+            profession: "", 
+            sex: "other", 
+            qualities: [], 
+            licence: false
+        });
     const [professions, setProfession] = useState();
     const [errors, setErrors] = useState({});
     const [qualities, setQualities] = useState({});
@@ -36,6 +45,9 @@ const SignUpForm = () => {
         },
         profession: {
             isRequired: {message: "Поле обязательно для заполнения"}
+        },
+        licence: {
+            isRequired: {message: "Необходимо принять соглашение"}
         }
     }
     useEffect(()=>{
@@ -99,9 +111,15 @@ const SignUpForm = () => {
                             name='qualities'
                             label="Какой Вы:"
                         />
+                        <CheckBoxField
+                            value={data.licence}
+                            onChange={handleChange}
+                            name='licence'
+                            error={errors.licence}
+                        >Я согласен на обработку персональных данных</CheckBoxField>
                         
                         <button 
-                            className='btn btn-primary' 
+                            className='btn btn-primary mb-4' 
                             type='submit' 
                             disabled={!isValid}
                             >
