@@ -91,6 +91,7 @@ const SignUpForm = () => {
                             label="Выбери свою профессию"
                             defaultOption="Choose.."
                             options={professions}
+                            name='professions'
                             onChange={handleChange}
                             value={data.profession}
                             error={errors.profession}
@@ -108,6 +109,7 @@ const SignUpForm = () => {
                         <MultiSelectField
                             options={qualities}
                             onChange={handleChange}
+                            defaultValue={data.qualities}
                             name='qualities'
                             label="Какой Вы:"
                         />
